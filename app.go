@@ -6,40 +6,63 @@ import (
     "regexp"
     "io/ioutil"
     "strings"
+    "os"
 )
 
 
+var re = regexp.MustCompile(`(?m)https?:\/\/[^\s)"]+`)
+
 func handler(w http.ResponseWriter, r *http.Request) {
-	var path = r.URL.Path;
+    var path = r.URL.Path;
 
-	resp, err := http.Get("http://www.thenewslens.com/" + path)
-	if err != nil {
-		// handle error
-	}
+    resp, err := http.Get("http://www.thenewslens.com/" + path)
+    if err != nil {
+    	// handle error
+        return
+    }
 
-	defer resp.Body.Close()
-	body, err := ioutil.ReadAll(resp.Body);
+    defer resp.Body.Close()
+    body, err := ioutil.ReadAll(resp.Body);
 
-	// http://image.thenewslens.com/wp-content/uploads/2015/09/徵人-banner_徵人.png
-	// replace to
-	// http://i.imgur.com/lPpksGP.jpg
-	patten := "http://image.thenewslens.com/wp-content/uploads/2015/09/徵人-banner_徵人.png"
-	new_string := "http://i.imgur.com/lPpksGP.jpg"
-	content := string(body)
-	content = strings.Replace(content, patten, new_string, -1)
 
-	fmt.Fprintf(w, content )
+    content := string(body)
+
+
+
+    // *****************************************************************************
+    // http://image.thenewslens.com/wp-content/uploads/2015/09/徵人-banner_徵人.png
+    //
+    // replace to
+    //
+    // http://i.imgur.com/lPpksGP.jpg
+    // *****************************************************************************
+
+    patten := "http://image.thenewslens.com/wp-content/uploads/2015/09/徵人-banner_徵人.png"
+    new_string := "http://i.imgur.com/lPpksGP.jpg"
+    content = strings.Replace(content, patten, new_string, -1)
+
+
+    // *****************************************************************************
+    // search all url
+    // re := regexp.MustCompile(`(https?:\/\/[^\s)"]+)`)
+    result := re.FindAllString(content, -1)
+    for _, v := range result {
+        matched := string(v)
+        i2 := strings.Index(matched, "wp.com")
+        if i2 != -1 {
+            new_string := strings.Split(v, "?")[0]
+            new_string = new_string + "?w=640"
+            content = strings.Replace(content, v, new_string, -1)
+        }
+    }
+
+    fmt.Fprintf(w, content )
 }
 
 func main() {
 
-	re := regexp.MustCompile("a(x*)b")
-	fmt.Println(re.ReplaceAllString("-ab-axxb-", "T"))
-	fmt.Println(re.ReplaceAllString("-ab-axxb-", "$1"))
-	fmt.Println(re.ReplaceAllString("-ab-axxb-", "$1W"))
-	fmt.Println(re.ReplaceAllString("-ab-axxb-", "${1}W"))
-
-
     http.HandleFunc("/", handler)
-    http.ListenAndServe(":8080", nil)
+
+    // http.ListenAndServe(":8080", nil)
+    http.ListenAndServe(":" + os.Getenv("PORT"), nil)
 }
