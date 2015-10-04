@@ -44,8 +44,10 @@ func handler(w http.ResponseWriter, r *http.Request) {
 
 
     // *****************************************************************************
-    // search all url
-    // re := regexp.MustCompile(`(https?:\/\/[^\s)"]+)`)
+    //
+    // search all url with the magic
+    //
+    // *****************************************************************************
     result := re.FindAllString(content, -1)
     for _, v := range result {
         matched := string(v)
