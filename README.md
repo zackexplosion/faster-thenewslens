@@ -34,3 +34,6 @@ git clone https://github.com/zackexplosion/the-faster-thenewslens.git && go run 
 
 <http://zackexplosion.com/p/d73d>
 
+## Read more
+* <http://evanbyrne.com/blog/go-production-server-ubuntu-nginx>
+
