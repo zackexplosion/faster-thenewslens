@@ -13,9 +13,19 @@
 
 ## Compare
 
+<http://www.thenewslens.com/post/82643/>
+
+14.8M transfered, window onload in 33.67s, finished in 4.9min
+
 ![Imgur](http://i.imgur.com/La5eeMO.jpg)
 
+
+<http://www.thenewslens.xyz/post/82643/>
+
+5.2M transfered, window onload in 9.3s, finished in 1.9min
+
 ![Imgur](http://i.imgur.com/a2gHbFi.png)
+
 
 ## Contribute
 
