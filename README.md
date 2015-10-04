@@ -13,10 +13,8 @@
 
 ## Compare
 
-### BEFORE
 ![Imgur](http://i.imgur.com/La5eeMO.jpg)
 
-### AFTER
 ![Imgur](http://i.imgur.com/a2gHbFi.png)
 
 ## Contribute
