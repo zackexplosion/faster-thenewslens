@@ -7,6 +7,7 @@ import (
     "io/ioutil"
     "strings"
     "os"
+    "time"
 )
 
 
@@ -24,7 +25,7 @@ func handler(w http.ResponseWriter, r *http.Request) {
     defer resp.Body.Close()
     body, err := ioutil.ReadAll(resp.Body);
 
-
+    t0 := time.Now()
     content := string(body)
 
 
@@ -57,6 +58,10 @@ func handler(w http.ResponseWriter, r *http.Request) {
     }
 
     fmt.Fprintf(w, content )
+    t1 := time.Now()
+
+    fmt.Printf("URL: %v \n", path )
+    fmt.Printf("The call took %v to run.\n", t1.Sub(t0))
 }
 
 func main() {
