@@ -28,7 +28,11 @@
 
 ## Contribute
 
-git clone https://github.com/zackexplosion/the-faster-thenewslens.git && go run app.go
+git clone https://github.com/zackexplosion/the-faster-thenewslens.git 
+
+Then
+
+PORT=8888 go run app.go
 
 ## How it works?
 
