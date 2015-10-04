@@ -30,3 +30,7 @@
 
 git clone https://github.com/zackexplosion/the-faster-thenewslens.git && go run app.go
 
+## Read More
+
+<http://zackexplosion.com/p/d73d>
+
