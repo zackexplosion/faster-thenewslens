@@ -1,6 +1,6 @@
 # 跑比較快的，關鍵評論網
 
-覺得關鍵評論網太肥厚，跑很慢嗎？來試試看! <http://www.thenewslens.xyz>
+覺得關鍵評論網太肥厚，跑很慢嗎？來試試看! <http://linkisdead.xyz>
 
 本專案公開原始碼，任何人都可以修改與複製。
 
@@ -19,7 +19,7 @@
 ![Imgur](http://i.imgur.com/La5eeMO.jpg)
 
 
-<http://www.thenewslens.xyz/post/82643/>
+<http://linkisdead.xyz>
 
 5.2M transfered, window onload in 9.3s, finished in 1.9min
 
